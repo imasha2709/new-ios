@@ -1,35 +1,74 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var animateIn = false
     
     var body: some View {
-        
         NavigationStack {
-            
             VStack(spacing: 30) {
                 
-                Text("Mini Games")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                NavigationLink(destination: TapFrenzyView()) {
+               
+                HStack(spacing: 12) {
+                    Image(systemName: "gamecontroller.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.purple)
                     
-                    Text("Tap Frenzy")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .frame(width: 250, height: 60)
-                        .background(Color.blue)
-                        .cornerRadius(15)
+                    Text("Mini Games")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                 }
+                .offset(y: animateIn ? 0 : -20)
+                .opacity(animateIn ? 1 : 0)
+                
+              
+                NavigationLink(destination: TapFrenzyView()) {
+                    HStack(spacing: 15) {
+                        Image(systemName: "hand.tap.fill")
+                            .font(.title2)
+                        
+                        Text("Tap Frenzy")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 260, height: 60)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(LinearGradient(colors: [.blue, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    )
+                    .shadow(color: .blue.opacity(0.3), radius: 10, x: 0, y: 5)
+                }
+                .buttonStyle(ScaleButtonStyle())
+                .offset(y: animateIn ? 0 : 30)
+                .opacity(animateIn ? 1 : 0)
+                
                 
                 NavigationLink(destination: LightItUpView()) {
-                    
-                    Text("Light It Up")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .frame(width: 250, height: 60)
-                        .background(Color.orange)
-                        .cornerRadius(15)
+                    HStack(spacing: 15) {
+                        Image(systemName: "lightbulb.fill")
+                            .font(.title2)
+                        
+                        Text("Light It Up")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 260, height: 60)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(LinearGradient(colors: [.orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    )
+                    .shadow(color: .orange.opacity(0.3), radius: 10, x: 0, y: 5)
+                }
+                .buttonStyle(ScaleButtonStyle())
+                .offset(y: animateIn ? 0 : 30)
+                .opacity(animateIn ? 1 : 0)
+                
+            }
+            .padding()
+            .onAppear {
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.7, blendDuration: 0)) {
+                    animateIn = true
                 }
             }
         }
