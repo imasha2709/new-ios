@@ -1,12 +1,11 @@
 import SwiftUI
 
-// MARK: - Structural Data Model
+
 struct Card: Identifiable {
     let id = UUID()
     var isLit: Bool = false
 }
 
-// MARK: - Custom Button Style
 struct ScaleButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

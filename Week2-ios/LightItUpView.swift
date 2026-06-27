@@ -14,7 +14,7 @@ struct LightItUpView: View {
     
     var body: some View {
         VStack(spacing: 15) {
-            // MARK: - Header
+            
             VStack(spacing: 5) {
                 HStack(spacing: 8) {
                     Image(systemName: "lightbulb.fill")
@@ -41,7 +41,7 @@ struct LightItUpView: View {
             }
             .padding(.vertical, 10)
             
-            // MARK: - Main Interactive Matrix Grid
+            
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: columns), spacing: 12) {
                 ForEach(cards.indices, id: \.self) { index in
                     RoundedRectangle(cornerRadius: 16)
@@ -65,7 +65,7 @@ struct LightItUpView: View {
             
             Spacer()
             
-            // MARK: - Game Over Control Menu
+            
             if gameOver {
                 Button {
                     withAnimation(.spring()) { startGame() }
@@ -104,7 +104,7 @@ struct LightItUpView: View {
         }
     }
     
-    // MARK: - Helper Logics
+   
     func handleTap(at index: Int) {
         guard index < cards.count else { return }
         if cards[index].isLit {
@@ -153,7 +153,7 @@ struct LightItUpView: View {
     
     func resetCards(count: Int) {
         cards = (0..<count).map { _ in Card() }
-        lightRandomCard() // Ensure at least one random card lights up on generation split
+        lightRandomCard() 
     }
 }
 

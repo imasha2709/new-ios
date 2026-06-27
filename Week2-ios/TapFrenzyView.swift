@@ -61,7 +61,7 @@ struct TapFrenzyView: View {
             
             Spacer()
             
-            // MARK: - Animated Target Button
+            
             Button {
                 withAnimation(.spring(response: 0.15, dampingFraction: 0.4)) {
                     tapScale = 0.85
